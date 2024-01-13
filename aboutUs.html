@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom Navbar</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <style>
+      .about-us-section {
+        text-align: center;
+        margin-top: 80px; /* Adjust the margin as needed */
+      }
+
+      .about-us-content {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff; /* Add a background color if desired */
+        border-radius: 8px; /* Add border-radius for rounded corners */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+      }
+
+      .about-us-content h2 {
+        color: var(--main-color); /* Use the main color for the heading */
+      }
+
+      .about-us-content p {
+        color: #333; /* Adjust text color as needed */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="logo">FroSoft</div>
+      <div class="hamburger" onclick="toggleMenu()">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+      <ul class="menu">
+        <li class="menu-line"></li>
+        <li>
+          <a href="index.html"><i class="fas fa-home"></i>Home</a>
+        </li>
+        <li class="menu-line"></li>
+        <li>
+          <a href="#"><i class="fas fa-info-circle"></i>About</a>
+        </li>
+        <li class="menu-line"></li>
+        <li>
+          <a href="#services"><i class="fas fa-cogs"></i>Services</a>
+        </li>
+        <li class="menu-line"></li>
+        <li>
+          <a href="contactUs.html"><i class="fas fa-envelope"></i>Contact</a>
+        </li>
+        <li class="menu-line"></li>
+      </ul>
+    </div>
+
+    <div class="about-us-section">
+      <div class="about-us-content">
+        <h2>About Us</h2>
+        <p>
+          Welcome to FroSoft, your go-to software solutions provider. We are
+          committed to delivering high-quality services to meet your
+          technological needs. Our team of experts is dedicated to innovation
+          and customer satisfaction.
+        </p>
+
+        <p>
+          Welcome to FroSoft, your go-to software solutions provider. We are
+          committed to delivering high-quality services to meet your
+          technological needs. Our team of experts is dedicated to innovation
+          and customer satisfaction.
+        </p>
+
+        <p>
+          Welcome to FroSoft, your go-to software solutions provider. We are
+          committed to delivering high-quality services to meet your
+          technological needs. Our team of experts is dedicated to innovation
+          and customer satisfaction.
+        </p>
+
+        <p>
+          Welcome to FroSoft, your go-to software solutions provider. We are
+          committed to delivering high-quality services to meet your
+          technological needs. Our team of experts is dedicated to innovation
+          and customer satisfaction.
+        </p>
+
+        <p>
+          Welcome to FroSoft, your go-to software solutions provider. We are
+          committed to delivering high-quality services to meet your
+          technological needs. Our team of experts is dedicated to innovation
+          and customer satisfaction.
+        </p>
+      </div>
+    </div>
+
+    <footer class="footer-section">
+      <div class="footer-content">
+        <div class="social-icons">
+          <a href="#" target="_blank" title="Facebook"
+            ><i class="fab fa-facebook"></i
+          ></a>
+          <a href="#" target="_blank" title="Twitter"
+            ><i class="fab fa-twitter"></i
+          ></a>
+          <a href="#" target="_blank" title="LinkedIn"
+            ><i class="fab fa-linkedin"></i
+          ></a>
+          <!-- Add more social icons as needed -->
+        </div>
+        <p>&copy; 2024 FroSoft Software Company. All rights reserved.</p>
+        <p>Address: Biratnagar, NEPAL</p>
+        <p>
+          Email:
+          <a id="mailer" href="mailto:frosoftsoultions@gmail.com"
+            >frosoftsoultions@gmail.com</a
+          >
+          | Phone: +977 9702940654
+        </p>
+      </div>
+    </footer>
+
+    <script src="scripts/ToggleMenu.js"></script>
+  </body>
+</html>
