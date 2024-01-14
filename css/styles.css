@@ -268,12 +268,12 @@ h1{
 }
 
 .technology-icon {
-  font-size: 4rem;
+  font-size:4rem;
   color: white;
 }
 
 .language-name {
-  font-size: 1rem; /* Adjusted font size for language name */
+  font-size:0.8rem; /* Adjusted font size for language name */
   color:var(--main-color);
   margin-top: 10px;
   text-transform: uppercase; /* Converted language name to uppercase */
@@ -302,8 +302,15 @@ color: transparent;
   .technology-we-use{
     margin-bottom: 10%;
   }
- 
+  .language-name {
+    font-size: 1rem; /* Adjusted font size for language name */
+     /* Converted language name to uppercase */
+  }
 
+  .technology-icon {
+    font-size: 4rem;
+    
+  }
 
 }
 
