@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom Navbar</title>
+
+    <title>
+      FroSoft Software Solutions - Innovative Web Design, Mobile App
+      Development, and Digital Marketing
+    </title>
+    <meta
+      name="description"
+      content="FroSoft Solutions is a leading software company specializing in innovative web design, mobile app development, and digital marketing services. Transform your digital presence with our creative solutions."
+    />
+    <meta
+      name="keywords"
+      content="FroSoft, web design, mobile app development, digital marketing, software solutions, innovation, technology"
+    />
+    <meta name="author" content="FroSoft Software Solutions" />
+    <meta name="robots" content="index, follow" />
+    <meta
+      name="og:title"
+      property="og:title"
+      content="FroSoft Solutions - Innovative Web Design, Mobile App Development, and Digital Marketing"
+    />
+    <meta
+      name="og:description"
+      property="og:description"
+      content="Transform your digital presence with FroSoft Solutions, a leading software company specializing in web design, mobile app development, and digital marketing."
+    />
+    <meta
+      name="og:image"
+      property="og:image"
+      content="https://frosoft.com/images/frosoft.png"
+    />
+    <meta name="og:url" property="og:url" content="https://frosoft.com" />
+    <meta name="og:type" property="og:type" content="website" />
+    <meta
+      name="twitter:card"
+      content="https://frosoft.com/images/frosoft.png"
+    />
+    <meta
+      name="twitter:title"
+      content="FroSoft Solutions - Innovative Web Design, Mobile App Development, and Digital Marketing"
+    />
+    <meta
+      name="twitter:description"
+      content="Transform your digital presence with FroSoft Solutions, a leading software company specializing in web design, mobile app development, and digital marketing."
+    />
+    <meta
+      name="twitter:image"
+      content="https://frosoft.com/images/frosoft.png"
+    />
+    <meta name="twitter:site" content="@FroSoftSoftwareSolutions" />
+    <link rel="canonical" href="https://frosoft.com" />
+
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link rel="icon" href="./images/favicon.ico" type="image/x-icon" />
+    <style>
+      .not-found {
+        display: flex;
+        height: 100vh;
+
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      .back-to-home-button {
+        margin: 20px;
+        text-decoration: none;
+        background: rgb(41, 117, 158);
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        outline: none;
+      }
+      .back-to-home-button:hover {
+        background: #000033;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="logo">FroSoft</div>
+      <div class="hamburger" onclick="toggleMenu()">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+      <ul class="menu">
+        <li class="menu-line"></li>
+        <li>
+          <a href="index.html"><i class="fas fa-home"></i>Home</a>
+        </li>
+        <li class="menu-line"></li>
+        <li>
+          <a href="#"><i class="fas fa-info-circle"></i>About</a>
+        </li>
+        <li class="menu-line"></li>
+        <li>
+          <a href="#services"><i class="fas fa-cogs"></i>Services</a>
+        </li>
+        <li class="menu-line"></li>
+        <li>
+          <a href="contactUs.html"><i class="fas fa-envelope"></i>Contact</a>
+        </li>
+        <li class="menu-line"></li>
+      </ul>
+    </div>
+    <div class="not-found">
+      <h1 class="back-to-home">Not Found</h1>
+      <a href="/" class="back-to-home-button">Back to home</a>
+    </div>
+
+    <footer class="footer-section">
+      <div class="footer-content">
+        <div class="social-icons">
+          <a href="#" target="_blank" title="Facebook"
+            ><i class="fab fa-facebook"></i
+          ></a>
+          <a href="#" target="_blank" title="Twitter"
+            ><i class="fab fa-twitter"></i
+          ></a>
+          <a href="#" target="_blank" title="LinkedIn"
+            ><i class="fab fa-linkedin"></i
+          ></a>
+          <!-- Add more social icons as needed -->
+        </div>
+        <p>&copy; 2024 FroSoft Software Company. All rights reserved.</p>
+        <p>Address: Biratnagar, NEPAL</p>
+        <p>
+          Email:
+          <a id="mailer" href="mailto:frosoftsoultions@gmail.com"
+            >frosoftsoultions@gmail.com</a
+          >
+          | Phone: +977 9702940654
+        </p>
+      </div>
+    </footer>
+
+    <script src="scripts/ToggleMenu.js"></script>
+  </body>
+</html>

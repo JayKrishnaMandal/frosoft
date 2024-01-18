@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frosoft Software Solutions</title>
+  <link rel="stylesheet" href="css/contactUs.css">
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+</head>
+
+<body>
+  <div class="navbar">
+    <div class="logo">FroSoft</div>
+    <div class="hamburger" onclick="toggleMenu()">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+    <ul class="menu">
+      <li class="menu-line"></li>
+      <li>
+        <a href="index.html"><i class="fas fa-home"></i>Home</a>
+      </li>
+      <li class="menu-line"></li>
+      <li>
+        <a href="aboutUs.html"><i class="fas fa-info-circle"></i>About</a>
+      </li>
+      <li class="menu-line"></li>
+      <li>
+        <a href="#"><i class="fas fa-cogs"></i>Services</a>
+      </li>
+      <li class="menu-line"></li>
+      <li>
+        <a href="#"><i class="fas fa-envelope"></i>Contact</a>
+      </li>
+      <li class="menu-line"></li>
+    </ul>
+  </div>
+
+  <section class="contact-section">
+    <div class="contact-container">
+      <div class="contact-form">
+        <h2 >Contact Us</h2>
+        <form action="https://docs.google.com/forms/d/e/1FAIpQLSc3VgeDT8tyszP9105sihMX05ifrxQWhC5mtAvC5dDNfiSj_g/formResponse" method="post">
+            <div class="form-group">
+          <label for="entry.1124756441">Name:</label>
+          <input type="text" id="name" name="entry.1124756441" required>
+        </div>
+        <div class="form-group">
+          <label for="entry.364475291">Email:</label>
+          <input type="email" id="email" name="entry.364475291" placeholder="(Optional)">
+        </div>
+        <div class="form-group">
+          <label for="entry.1839980304">Phone no. :</label>
+          <input type="text" id="phone" name="entry.1839980304" required>
+        </div>
+          <div class="form-group">
+          <label for="entry.1376606499">Message:</label>
+          <textarea id="message" name="entry.1376606499" rows="4" required placeholder="What do you want ?"></textarea>
+        </div>
+        
+          <button id="submit" type="submit">Submit</button>
+        
+        </form>
+      </div>
+
+    </section>
+    <div class="whatsapp-icon" onclick="openWhatsApp()">
+      <i class="fab fa-whatsapp"></i>
+      
+    </div>
+    <div class="whatsapp-icon phone" onclick="makePhoneCall()">
+      <i class="fas fa-phone-alt"></i>
+      
+    </div>
+    <div class="modal" id="successModal">
+      <p>Form submitted successfully!</p>
+      <p>We will contact you soon!</p>
+      <button onclick="closeModal()">OK</button>
+    </div>
+  
+
+
+  <footer class="footer-section">
+    <div class="footer-content">
+      <div class="social-icons">
+        <a href="https://www.facebook.com/profile.php?id=61555189215663" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="#" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <!-- Add more social icons as needed -->
+      </div>
+      <p>&copy; 2024 FroSoft Software Company. All rights reserved.</p>
+      <p>Address: Biratnagar, NEPAL</p>
+      <p>Email:  <a id="mailer"href="mailto:frosoftsoultions@gmail.com">frosoftsoultions@gmail.com</a> | Phone: +977 9702940654</p>
+    </div>
+  </footer>
+
+  <!-- ... (Remaining HTML content) ... -->
+
+  
+  <script src="scripts/ToggleMenu.js"></script>
+  <script src="scripts/whatsapp.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+    function showModal() {
+      $('#successModal').fadeIn();
+    }
+
+    function closeModal() {
+      $('#successModal').fadeOut();
+      $('form')[0].reset(); // Clear the form
+    }
+
+    function submitForm() {
+      $.ajax({
+        url: "https://docs.google.com/forms/d/e/1FAIpQLSc3VgeDT8tyszP9105sihMX05ifrxQWhC5mtAvC5dDNfiSj_g/formResponse",
+        data: $("form").serialize(),
+        type: "POST",
+        dataType: "xml",
+        statusCode: {
+          0: function () {
+            showModal();
+          },
+          200: function () {
+            showModal();
+          }
+        }
+      });
+    }
+
+    $("form").submit(function (e) {
+      e.preventDefault();
+      submitForm();
+    });
+  </script>
+</body>
+
+</html>
