@@ -253,6 +253,7 @@
                     placeholder="Your Name"
                     style="height: 55px"
                     name="entry.1124756441"
+                    required
                   />
                 </div>
                 <div class="col-md-6">
@@ -271,6 +272,7 @@
                     placeholder="phone no."
                     style="height: 55px"
                     name="entry.1839980304"
+                    required
                   />
                 </div>
                 <div class="col-12">
@@ -279,6 +281,7 @@
                     rows="4"
                     placeholder="Message"
                     name="entry.1376606499"
+                    required
                   ></textarea>
                 </div>
                 <div class="col-12">
@@ -288,6 +291,18 @@
                 </div>
               </div>
             </form>
+
+            <div class="modal" id="successModal">
+              <p>Form submitted successfully!</p>
+              <p>We will contact you soon!</p>
+              <button onclick="closeModal()">OK</button>
+            </div>
+
+
+
+
+
+
           </div>
           <div class="col-lg-6 wow slideInUp" data-wow-delay="0.6s">
             <iframe

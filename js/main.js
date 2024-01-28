@@ -116,3 +116,34 @@
     },
   });
 })(jQuery);
+
+function showModal() {
+  $("#successModal").fadeIn();
+}
+
+function closeModal() {
+  $("#successModal").fadeOut();
+  $("form")[0].reset(); // Clear the form
+}
+
+function submitForm() {
+  $.ajax({
+    url: "https://docs.google.com/forms/d/e/1FAIpQLSc3VgeDT8tyszP9105sihMX05ifrxQWhC5mtAvC5dDNfiSj_g/formResponse",
+    data: $("form").serialize(),
+    type: "POST",
+    dataType: "xml",
+    statusCode: {
+      0: function () {
+        showModal();
+      },
+      200: function () {
+        showModal();
+      },
+    },
+  });
+}
+
+$("form").submit(function (e) {
+  e.preventDefault();
+  submitForm();
+});
