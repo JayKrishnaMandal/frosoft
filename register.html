@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      .form-container {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        padding: 30px;
+        width: 300px;
+        text-align: center;
+      }
+
+      img {
+        height: 80px;
+        width: 80px;
+      }
+
+      .input-container {
+        margin-bottom: 20px;
+        position: relative;
+      }
+
+      label {
+        display: block;
+        text-align: left;
+        margin-bottom: 5px;
+        font-size: 14px;
+        color: #555;
+      }
+
+      .input-container input {
+        width: calc(100% - 20px);
+        padding: 12px;
+        border: none;
+        border-bottom: 2px solid #ccc;
+        outline: none;
+        transition: border-bottom-color 0.3s;
+        font-size: 16px;
+      }
+
+      .input-container input:focus {
+        border-bottom-color: #3498db;
+      }
+
+      .input-container.error input {
+        border-bottom-color: red;
+      }
+
+      .input-container i {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        cursor: pointer;
+        color: #ccc;
+      }
+
+      button {
+        width: 100%;
+        padding: 12px;
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        border-radius: 100px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        font-size: 16px;
+      }
+
+      button:hover {
+        background-color: white;
+        border: 2px solid #3498db;
+        font-weight: bold;
+        color: #3498db;
+      }
+
+      .back-to-login {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 14px;
+        color: #555;
+      }
+
+      .back-to-login a {
+        text-decoration: none;
+        color: #3498db;
+        margin-right: 5px;
+      }
+
+      @media only screen and (max-width: 600px) {
+        .form-container {
+          margin-left: 20px;
+          margin-right: 20px;
+          width: 100%;
+        }
+      }
+    </style>
+    <title>Sign-Up Page</title>
+  </head>
+  <body>
+    <div class="form-container">
+      <img src="/img/frosoft-logo.png" alt="frosoft" />
+      <div class="input-container">
+        <label for="fullname">Full Name</label>
+        <input type="text" id="fullname" placeholder="Enter your full name" />
+      </div>
+      <div class="input-container">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Enter your email" />
+      </div>
+      <div class="input-container">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          placeholder="Enter your password"
+        />
+        <i class="fas fa-eye" id="togglePassword"></i>
+      </div>
+      <div class="input-container">
+        <label for="confirmPassword">Confirm Password</label>
+        <input
+          type="password"
+          id="confirmPassword"
+          placeholder="Confirm your password"
+        />
+        <i class="fas fa-eye" id="toggleConfirmPassword"></i>
+      </div>
+      <button id="signupBtn">Sign Up</button>
+      <div class="back-to-login">
+        <p>
+          Already have an account? <a href="login-form.html">Login here.</a>
+        </p>
+      </div>
+    </div>
+
+    <script>
+      const passwordInput = document.getElementById("password");
+      const confirmPassInput = document.getElementById("confirmPassword");
+      const togglePasswordBtn = document.getElementById("togglePassword");
+      const toggleConfirmPasswordBtn = document.getElementById(
+        "toggleConfirmPassword"
+      );
+      const signupBtn = document.getElementById("signupBtn");
+
+      togglePasswordBtn.addEventListener("click", () => {
+        const type = passwordInput.type === "password" ? "text" : "password";
+        passwordInput.type = type;
+        togglePasswordBtn.classList.toggle("fa-eye-slash");
+      });
+
+      toggleConfirmPasswordBtn.addEventListener("click", () => {
+        const type = confirmPassInput.type === "password" ? "text" : "password";
+        confirmPassInput.type = type;
+        toggleConfirmPasswordBtn.classList.toggle("fa-eye-slash");
+      });
+
+      signupBtn.addEventListener("click", () => {
+        if (validateForm()) {
+          // Perform signup logic here
+          alert("Sign-up successful!");
+        }
+      });
+
+      function validateForm() {
+        const fullname = document.getElementById("fullname").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value.trim();
+        const confirmPassword = document
+          .getElementById("confirmPassword")
+          .value.trim();
+
+        if (
+          fullname === "" ||
+          email === "" ||
+          password === "" ||
+          confirmPassword === ""
+        ) {
+          highlightEmptyFields();
+          return false;
+        }
+
+        if (password !== confirmPassword) {
+          alert("Passwords do not match.");
+          return false;
+        }
+
+        return true;
+      }
+
+      function highlightEmptyFields() {
+        const inputElements = document.querySelectorAll(
+          ".input-container input"
+        );
+        inputElements.forEach((input) => {
+          if (input.value.trim() === "") {
+            input.parentElement.classList.add("error");
+          } else {
+            input.parentElement.classList.remove("error");
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
