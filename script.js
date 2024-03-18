@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function sendVerificationToken(token) {
-  const apiEndpoint = "http://frosoft.nagarkokhabar.com"; // Replace with your server API endpoint
+  const apiEndpoint = "http://frosoft.nagarkokhabar.com/verify-email"; // Replace with your server API endpoint
 
   fetch(apiEndpoint, {
     method: "POST",
