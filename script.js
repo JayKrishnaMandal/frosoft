@@ -18,6 +18,7 @@ function sendVerificationToken(token) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      "Valid-API-Req": "frosoft-api",
     },
     body: JSON.stringify({ token: token }),
   })
