@@ -179,10 +179,38 @@
 
       signupBtn.addEventListener("click", () => {
         if (validateForm()) {
-          // Perform signup logic here
+          sendDataToServer();
           alert("Sign-up successful!");
         }
       });
+      function sendDataToServer() {
+      const fullname = document.getElementById("fullname").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      const formData = new FormData();
+      formData.append("username", fullname);
+      formData.append("email", email);
+      formData.append("password", password);
+
+      fetch("https://frosoft.com/register", {
+        method: "POST",
+        body: formData
+      })
+      .then(response => {
+        if (response.ok) {
+          // Success handling
+          alert("Sign-up successful!");
+        } else {
+          // Error handling
+          alert("Failed to sign up. Please try again.");
+        }
+      })
+      .catch(error => {
+        console.error("Error:", error);
+        alert("Failed to sign up. Please try again later.");
+      });
+    }
 
       function validateForm() {
         const fullname = document.getElementById("fullname").value.trim();
