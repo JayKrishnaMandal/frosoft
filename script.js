@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Send token to the server for verification
     sendVerificationToken(token);
   } else {
-    showMessage("Token not found in URL.");
+    window.location.href = "404";
   }
 });
 
