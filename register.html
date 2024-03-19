@@ -251,24 +251,8 @@
             // Disable signup button
             signupBtn.disabled = true;
 
-            // Simulate processing for 3 seconds
-            setTimeout(() => {
-                // If sign-up is successful
-                if (sendDataToServer()) {
-                    // Show modal with success message
-                    showModal("Sign up successful!", "fa-check-circle", "#27ae60");
-                } else {
-                    // Show modal with failure message
-                    showModal("Sign up failed. Please try again.", "fa-times-circle", "#e74c3c");
-                }
-                
-                // Reset button text
-                signupBtn.innerHTML = 'Sign Up';
-
-                // Enable signup button
-                signupBtn.disabled = false;
-
-            }, 8000);
+           sendDataToServer();
+           
         }
     });
 
@@ -293,10 +277,14 @@
         })
             .then(response => {
                 if (response.ok) {
-                    return true;
+                  showModal("Sign up successful!", "fa-check-circle", "#27ae60");
                 } else {
-                    return false;
+                  showModal("Sign up failed. Please try again.", "fa-times-circle", "#e74c3c");
                 }
+                signupBtn.innerHTML = 'Sign Up';
+
+                // Enable signup button
+                signupBtn.disabled = false;
             })
             .catch(error => {
                 console.error("Error:", error);
