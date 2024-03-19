@@ -17,11 +17,13 @@
         background-color: #f0f0f0;
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       }
+
       * {
         -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important;
         -webkit-focus-ring-color: rgba(255, 255, 255, 0) !important;
         outline: none !important;
       }
+
       .login-container {
         background-color: #fff;
         border-radius: 8px;
@@ -126,6 +128,56 @@
           display: block;
         }
       }
+
+      /* Modal Styles */
+      .modal {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 9999;
+      }
+
+      .modal-content {
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        padding: 30px;
+        max-width: 400px;
+        text-align: center;
+        position: relative;
+      }
+
+      .modal-content p {
+        margin-bottom: 20px;
+        font-size: 18px;
+        color: #333333;
+      }
+
+      .close {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        cursor: pointer;
+        font-size: 30px;
+        color: #aaaaaa;
+        transition: color 0.3s ease;
+      }
+
+      .close:hover {
+        color: #555555;
+      }
+
+      .fa-times-circle,
+      .fa-check-circle {
+        font-size: 40px;
+        margin-top: 20px;
+      }
     </style>
     <title>Login Page</title>
   </head>
@@ -148,21 +200,79 @@
       <div class="forgot-password">
         <a href="#">Forgot Password</a> <i class="fas fa-question-circle"></i>
       </div>
-      <button>Login</button>
+      <button id="loginBtn">Login</button>
       <div class="back-to-home">
-        -------- <a href="/index">Back to Home</a> --------
+        <a href="/index">Back to Home</a>
       </div>
     </div>
 
     <script>
       const passwordInput = document.getElementById("password");
       const togglePasswordBtn = document.getElementById("togglePassword");
+      const loginBtn = document.getElementById("loginBtn");
 
       togglePasswordBtn.addEventListener("click", () => {
         const type = passwordInput.type === "password" ? "text" : "password";
         passwordInput.type = type;
         togglePasswordBtn.classList.toggle("fa-eye-slash");
       });
+
+      loginBtn.addEventListener("click", () => {
+        const username = document.getElementById("username").value.trim();
+        const password = passwordInput.value.trim();
+
+        // Make sure both fields are filled
+        if (!username || !password) {
+          alert("Please enter both username and password.");
+          return;
+        }
+
+        // Send login data to server
+        fetch("https://frosoft.nagarkokhabar.com/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ username, password }),
+        })
+          .then((response) => {
+            if (response.ok) {
+              // If login successful, retrieve JWT token
+              return response.json();
+            } else {
+              // If login failed, display error message
+              showModal("Login failed. Please try again.");
+            }
+          })
+          .then((data) => {
+            // If JWT token received, redirect to dashboard
+            if (data && data.token) {
+              localStorage.setItem("token", data.token);
+              window.location.href = "/dashboard.html";
+            } else {
+              // If token not received, display error message
+              showModal("JWT token not received.");
+            }
+          })
+          .catch((error) => {
+            alert(error.message);
+          });
+      });
+
+      function showModal(message, iconClass, iconColor) {
+        const modal = document.createElement("div");
+        modal.classList.add("modal");
+        modal.innerHTML = `
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>${message}</p>
+                <i class="fas ${iconClass}" style="color: ${iconColor};"></i>
+                <div class="go-to-home">
+                    <a href="/">--- Home ---</a>
+                </div>
+            </div>
+        `;
+      }
     </script>
   </body>
 </html>
