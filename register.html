@@ -158,99 +158,92 @@
 
     <script>
       const passwordInput = document.getElementById("password");
-      const confirmPassInput = document.getElementById("confirmPassword");
-      const togglePasswordBtn = document.getElementById("togglePassword");
-      const toggleConfirmPasswordBtn = document.getElementById(
+    const confirmPassInput = document.getElementById("confirmPassword");
+    const togglePasswordBtn = document.getElementById("togglePassword");
+    const toggleConfirmPasswordBtn = document.getElementById(
         "toggleConfirmPassword"
-      );
-      const signupBtn = document.getElementById("signupBtn");
+    );
+    const signupBtn = document.getElementById("signupBtn");
 
-      togglePasswordBtn.addEventListener("click", () => {
+    togglePasswordBtn.addEventListener("click", () => {
         const type = passwordInput.type === "password" ? "text" : "password";
         passwordInput.type = type;
         togglePasswordBtn.classList.toggle("fa-eye-slash");
-      });
+    });
 
-      toggleConfirmPasswordBtn.addEventListener("click", () => {
+    toggleConfirmPasswordBtn.addEventListener("click", () => {
         const type = confirmPassInput.type === "password" ? "text" : "password";
         confirmPassInput.type = type;
         toggleConfirmPasswordBtn.classList.toggle("fa-eye-slash");
-      });
+    });
 
-      signupBtn.addEventListener("click", () => {
+    signupBtn.addEventListener("click", () => {
         if (validateForm()) {
-          sendDataToServer();
-          alert("Sign-up successful!");
+            sendDataToServer();
         }
-      });
-      function sendDataToServer() {
-      const fullname = document.getElementById("fullname").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const password = document.getElementById("password").value.trim();
+    });
 
-      const formData = new FormData();
-      formData.append("username", fullname);
-      formData.append("email", email);
-      formData.append("password", password);
-
-      fetch("https://frosoft.nagarkokhabar.com/register", {
-        method: "POST",
-        body: formData
-      })
-      .then(response => {
-        if (response.ok) {
-          console.log(formData);
-          // Success handling
-          alert("Sign-up successful!");
-        } else {
-          // Error handling
-          alert("Failed to sign up. Please try again.");
-        }
-      })
-      .catch(error => {
-        console.error("Error:", error);
-        alert("Failed to sign up. Please try again later.");
-      });
-    }
-
-      function validateForm() {
+    function sendDataToServer() {
         const fullname = document.getElementById("fullname").value.trim();
         const email = document.getElementById("email").value.trim();
         const password = document.getElementById("password").value.trim();
-        const confirmPassword = document
-          .getElementById("confirmPassword")
-          .value.trim();
+        const confirmPassword = document.getElementById("confirmPassword").value.trim();
 
-        if (
-          fullname === "" ||
-          email === "" ||
-          password === "" ||
-          confirmPassword === ""
-        ) {
-          highlightEmptyFields();
-          return false;
+        const formData = {
+            username: fullname,
+            email: email,
+            password: password
+        };
+
+        fetch("https://frosoft.nagarkokhabar.com/register", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formData)
+        })
+            .then(response => {
+                if (response.ok) {
+                    alert("Sign-up successful!");
+                } else {
+                    alert("Failed to sign up. Please try again.");
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("Failed to sign up. Please try again later.");
+            });
+    }
+
+    function validateForm() {
+        const fullname = document.getElementById("fullname").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value.trim();
+        const confirmPassword = document.getElementById("confirmPassword").value.trim();
+
+        if (fullname === "" || email === "" || password === "" || confirmPassword === "") {
+            highlightEmptyFields();
+            return false;
         }
 
         if (password !== confirmPassword) {
-          alert("Passwords do not match.");
-          return false;
+            alert("Passwords do not match.");
+            return false;
         }
 
         return true;
-      }
+    }
 
-      function highlightEmptyFields() {
-        const inputElements = document.querySelectorAll(
-          ".input-container input"
-        );
+    function highlightEmptyFields() {
+        const inputElements = document.querySelectorAll(".input-container input");
         inputElements.forEach((input) => {
-          if (input.value.trim() === "") {
-            input.parentElement.classList.add("error");
-          } else {
-            input.parentElement.classList.remove("error");
-          }
+            if (input.value.trim() === "") {
+                input.parentElement.classList.add("error");
+            } else {
+                input.parentElement.classList.remove("error");
+            }
         });
-      }
+    }
     </script>
   </body>
 </html>
