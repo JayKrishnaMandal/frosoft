@@ -266,13 +266,6 @@
               showModal("Login Successful", "fa-check-circle", "#27ae60");
               return response.json();
             } else {
-              // If login failed, display error message
-              showModal(
-                "check Email And password and try again",
-                "fa-times-circle",
-                "#e74c3c"
-              );
-              clearForm();
               throw new Error("Login failed");
             }
           })
@@ -319,6 +312,7 @@
         email.value = "";
         passwordInput.value = "";
         loginBtn.innerHTML = "Login";
+        loginBtn.disabled = false;
 
         // Remove error class from input containers
         const inputContainers = document.querySelectorAll(".input-container");
