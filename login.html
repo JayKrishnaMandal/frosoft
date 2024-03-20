@@ -248,14 +248,18 @@
               return response.json();
             } else {
               // If login failed, display error message
-              showModal("Login failed. Please try again.");
+              showModal(
+                "Login failed. Please try again.",
+                "fa-times-circle",
+                "#e74c3c"
+              );
             }
           })
           .then((data) => {
             // If JWT token received, redirect to dashboard
             if (data && data.token) {
               localStorage.setItem("token", data.token);
-              window.location.href = "/dashboard.html";
+              window.location.href = "/dashboard";
             } else {
               // If token not received, display error message
               showModal("JWT token not received.");
