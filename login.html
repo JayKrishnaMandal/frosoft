@@ -178,6 +178,21 @@
         font-size: 40px;
         margin-top: 20px;
       }
+
+      .go-to-home {
+        margin-top: 20px;
+      }
+
+      .go-to-home a {
+        text-decoration: none;
+        color: #3498db;
+        font-weight: bold;
+        transition: color 0.3s ease;
+      }
+
+      .go-to-home a:hover {
+        color: #207abd;
+      }
     </style>
     <title>Login Page</title>
   </head>
@@ -269,6 +284,11 @@
           })
           .catch((error) => {
             console.error(error);
+            showModal(
+              "Login failed. Please try again.",
+              "fa-times-circle",
+              "#e74c3c"
+            );
           });
       });
 
@@ -276,15 +296,15 @@
         const modal = document.createElement("div");
         modal.classList.add("modal");
         modal.innerHTML = `
-          <div class="modal-content">
-            <span class="close">&times;</span>
-            <p>${message}</p>
-            <i class="fas ${iconClass}" style="color: ${iconColor};"></i>
-            <div class="go-to-home">
-              <a href="/">--- Home ---</a>
-            </div>
-          </div>
-        `;
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p>${message}</p>
+      <i class="fas ${iconClass}" style="color: ${iconColor};"></i>
+      <div class="go-to-home">
+        <a href="/">--- Home ---</a>
+      </div>
+    </div>
+  `;
         document.body.appendChild(modal);
 
         // Close modal on close button click
