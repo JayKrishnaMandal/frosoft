@@ -218,6 +218,12 @@
       });
 
       loginBtn.addEventListener("click", () => {
+        loginBtn.innerHTML =
+          '<i class="fas fa-spinner fa-spin"></i> Processing...';
+
+        // Disable login button
+        loginBtn.disabled = true;
+
         const email = document.getElementById("email").value.trim();
         const password = passwordInput.value.trim();
 
@@ -238,6 +244,7 @@
           .then((response) => {
             if (response.ok) {
               // If login successful, retrieve JWT token
+              showModal(" Login Successful", "fa-check-circle", "#27ae60");
               return response.json();
             } else {
               // If login failed, display error message
