@@ -268,10 +268,11 @@
             } else {
               // If login failed, display error message
               showModal(
-                "Login failed. Please try again.",
+                "check Email And password and try again",
                 "fa-times-circle",
                 "#e74c3c"
               );
+              clearForm();
               throw new Error("Login failed");
             }
           })
@@ -289,6 +290,7 @@
               "fa-times-circle",
               "#e74c3c"
             );
+            clearForm();
           });
       });
 
@@ -311,6 +313,17 @@
         const closeButton = modal.querySelector(".close");
         closeButton.addEventListener("click", () => {
           modal.remove();
+        });
+      }
+      function clearForm() {
+        email.value = "";
+        passwordInput.value = "";
+        loginBtn.innerHTML = "Login";
+
+        // Remove error class from input containers
+        const inputContainers = document.querySelectorAll(".input-container");
+        inputContainers.forEach((container) => {
+          container.classList.remove("error");
         });
       }
     </script>
