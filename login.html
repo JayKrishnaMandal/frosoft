@@ -262,12 +262,22 @@
               window.location.href = "/dashboard";
             } else {
               // If token not received, display error message
-              showModal("JWT token not received.");
+              showModal(
+                "Login failed. Please try again.",
+                "fa-times-circle",
+                "#e74c3c"
+              );
             }
           })
           .catch((error) => {
-            alert(error.message);
+            showModal(
+              "Login failed. Please try again.",
+              "fa-times-circle",
+              "#e74c3c"
+            );
           });
+        loginBtn.disabled = false;
+        loginBtn.innerHTML = "Login";
       });
 
       function showModal(message, iconClass, iconColor) {
