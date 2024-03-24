@@ -24,7 +24,11 @@ function sendVerificationToken(token) {
   })
     .then((response) => {
       if (response.ok) {
-        showModal("Verification successful!", "fa-check-circle", "#27ae60");
+        showModal(
+          "<h4>Verification successful!<h4>",
+          "fa-check-circle",
+          "#27ae60"
+        );
         setTimeout(() => {
           window.location.href = "/";
         }, 2000);
