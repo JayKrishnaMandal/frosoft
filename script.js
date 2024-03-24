@@ -24,35 +24,52 @@ function sendVerificationToken(token) {
   })
     .then((response) => {
       if (response.ok) {
-        showMessage("Verification successful!");
+        showModal("Verification successful!", "fa-check-circle", "#27ae60");
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 500);
       } else {
-        showMessage("Verification failed. Please try again.");
+        showModal(
+          "Verification failed. Please try again.",
+          "fa-times-circle",
+          "#e74c3c"
+        );
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 500);
       }
     })
     .catch((error) => {
-      console.error("Error:", error);
-      showMessage("An error occurred. Please try again later.");
+      //console.error("Error:", error);
+
+      showModal(
+        "Verification failed. Please try again.",
+        "fa-times-circle",
+        "#e74c3c"
+      );
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 500);
     });
 }
+function showModal(message, iconClass, iconColor) {
+  const modal = document.createElement("div");
+  modal.classList.add("modal");
+  modal.innerHTML = `
+<div class="modal-content">
+<span class="close">&times;</span>
+<p>${message}</p>
+<i class="fas ${iconClass}" style="color: ${iconColor};"></i>
+<div class="go-to-home">
+  <a href="/">--- Home ---</a>
+</div>
+</div>
+`;
+  document.body.appendChild(modal);
 
-function showMessage(message) {
-  document.getElementById("message").textContent = message;
-  // Show modal
-  const modal = document.getElementById("myModal");
-  const modalMessage = document.getElementById("modal-message");
-  modalMessage.textContent = message;
-  modal.style.display = "block";
-
-  // Close modal when the user clicks anywhere outside of it
-  window.onclick = function (event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  };
-
-  // Close modal when the user clicks the close button
-  const closeButton = document.getElementsByClassName("close")[0];
-  closeButton.onclick = function () {
-    modal.style.display = "none";
-  };
+  // Close modal on close button click
+  const closeButton = modal.querySelector(".close");
+  closeButton.addEventListener("click", () => {
+    modal.remove();
+  });
 }
