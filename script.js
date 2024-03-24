@@ -27,7 +27,7 @@ function sendVerificationToken(token) {
         showModal("Verification successful!", "fa-check-circle", "#27ae60");
         setTimeout(() => {
           window.location.href = "/";
-        }, 500);
+        }, 2000);
       } else {
         showModal(
           "Verification failed. Please try again.",
@@ -36,7 +36,7 @@ function sendVerificationToken(token) {
         );
         setTimeout(() => {
           window.location.href = "/";
-        }, 500);
+        }, 2000);
       }
     })
     .catch((error) => {
@@ -49,7 +49,7 @@ function sendVerificationToken(token) {
       );
       setTimeout(() => {
         window.location.href = "/";
-      }, 500);
+      }, 2000);
     });
 }
 function showModal(message, iconClass, iconColor) {
